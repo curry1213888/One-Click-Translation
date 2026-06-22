@@ -1,0 +1,7 @@
+bin/
+obj/
+_build_check/
+.vs/
+*.user
+*.suo
+*.cache

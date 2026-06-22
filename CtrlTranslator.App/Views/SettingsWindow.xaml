@@ -1,0 +1,119 @@
+<Window x:Class="CtrlTranslator.App.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="API 密钥"
+        Width="480"
+        Height="376"
+        Icon="pack://application:,,,/app.ico"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="White"
+        FontFamily="{StaticResource AppFontFamily}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="66"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="62"/>
+        </Grid.RowDefinitions>
+
+        <!-- ══ Section Header ══ -->
+        <Border Grid.Row="0"
+                Padding="24,0"
+                BorderBrush="{StaticResource DividerBrush}"
+                BorderThickness="0,0,0,1">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="有道智云 API 密钥"
+                           FontSize="15"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource TextPrimaryBrush}"/>
+                <TextBlock Text="配置后即可使用有道智云翻译服务"
+                           FontSize="12"
+                           Foreground="{StaticResource TextMutedBrush}"
+                           Margin="0,3,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- ══ Form ══ -->
+        <Grid Grid.Row="1" Margin="24,20,24,16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="14"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="88"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="13"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       Text="AppKey"/>
+            <TextBox x:Name="AppKeyTextBox"
+                     Grid.Row="0" Grid.Column="1"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0"
+                       VerticalAlignment="Center"
+                       FontSize="13"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       Text="AppSecret"/>
+            <PasswordBox x:Name="AppSecretPasswordBox"
+                         Grid.Row="2" Grid.Column="1"/>
+
+            <!-- Info tip -->
+            <Border Grid.Row="4" Grid.Column="1"
+                    Background="{StaticResource SurfaceBrush}"
+                    BorderBrush="{StaticResource DividerBrush}"
+                    BorderThickness="1"
+                    CornerRadius="7"
+                    Padding="10,8">
+                <TextBlock Foreground="{StaticResource TextMutedBrush}"
+                           FontSize="12"
+                           TextWrapping="Wrap"
+                           Text="密钥仅保存在当前用户目录，不会上传至任何服务器。"/>
+            </Border>
+
+            <!-- Test result -->
+            <TextBlock x:Name="TestResultTextBlock"
+                       Grid.Row="6" Grid.Column="1"
+                       FontSize="12"
+                       TextWrapping="Wrap"
+                       Foreground="{StaticResource TextMutedBrush}"
+                       Text="点击「测试连接」验证密钥可用性。"/>
+        </Grid>
+
+        <!-- ══ Button Bar ══ -->
+        <Border Grid.Row="2"
+                Background="{StaticResource SurfaceBrush}"
+                BorderBrush="{StaticResource DividerBrush}"
+                BorderThickness="0,1,0,0"
+                Padding="24,0">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                <Button x:Name="TestConnectionButton"
+                        Style="{StaticResource SecondaryButton}"
+                        Width="88"
+                        Margin="0,0,8,0"
+                        Content="测试连接"
+                        Click="TestConnectionButton_OnClick"/>
+                <Button Style="{StaticResource SecondaryButton}"
+                        Width="72"
+                        Margin="0,0,8,0"
+                        Content="取消"
+                        Click="CancelButton_OnClick"/>
+                <Button x:Name="SaveButton"
+                        Width="72"
+                        Content="保存"
+                        IsDefault="True"
+                        Click="SaveButton_OnClick"/>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
